@@ -7,11 +7,16 @@
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
+      // Send login request to your Web App URL
       const response = await fetch(
-        "YOUR_GOOGLE_APPS_SCRIPT_URL?email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password)
+        "https://script.google.com/macros/s/AKfycbxYJe3NUaIvlNA0iIrJkdwamlztUKkPa1rFpQSE_UgbUZwLeRJxFhMZMEqC83jV5gJf/exec" +
+        "?email=" + encodeURIComponent(email) +
+        "&password=" + encodeURIComponent(password)
       );
+
       const result = await response.text();
 
+      // Redirect based on response
       if (result === "success") {
         window.location.href = "logged_in.html";
       } else {
